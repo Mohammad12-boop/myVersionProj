@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4840A3"
+    tools:context=".Publish_Marks">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="420dp"
+        android:layout_height="700dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:background="#D9E5FF"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/publish_marks"
+            android:textAlignment="center"
+            android:textColor="#4840A3"
+            android:textSize="34sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <android.widget.RadioButton
+                android:id="@+id/radio_option1"
+                style="@style/CustomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:button="@drawable/custom_radio_selector"
+                android:padding="8dp"
+                android:text="@string/rb_publish_marks" />
+
+            <android.widget.RadioButton
+                android:id="@+id/radio_option2"
+                style="@style/CustomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_radio_selector"
+                android:padding="8dp"
+                android:text="@string/show_marks" />
+        </RadioGroup>
+
+        <Spinner
+            android:id="@+id/spnSubjects"
+            android:layout_width="242dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/spinner_background" />
+
+        <Spinner
+            android:id="@+id/spnClasses"
+            android:layout_width="242dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/spinner_background"
+            android:visibility="visible" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <Spinner
+                android:id="@+id/spnAssessmentType"
+                android:layout_width="242dp"
+                android:layout_height="48dp"
+                android:background="@drawable/spinner_background"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/edtAssessment_type"
+                android:layout_width="242dp"
+                android:layout_height="48dp"
+                android:background="@drawable/edittext_background"
+                android:ems="10"
+                android:fontFamily="@font/capriola"
+                android:hint="@string/enter_assessment_type"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textAlignment="center"
+                android:textColor="#4840A3"
+                android:textColorHint="#4840A3"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/btLoad"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:onClick="btLoadOnClick"
+            android:text="@string/load" />
+
+        <ScrollView
+            android:id="@+id/sclTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="#4840A3"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/baselin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#D9E5FF"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/txtAssessment_type"
+                    style="@style/CustomTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/name"
+                    android:textSize="15pt" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/name"
+                        android:textSize="10pt" />
+
+                    <TextView
+                        android:id="@+id/txtMarks"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:text="@string/marks"
+                        android:textSize="10pt" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btPublish"
+                    style="@style/CustomButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:onClick="btPublishOnClick"
+                    android:text="@string/publish"
+                    android:visibility="visible" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="283dp"
+        android:layout_height="84dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="@string/w3_school"
+        android:textColor="#D9E5FF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btBack"
+        style="@style/CustomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="331dp"
+        android:layout_marginBottom="29dp"
+        android:rotation="180"
+        app:icon="@android:drawable/ic_media_play"
+        app:iconGravity="textEnd"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:onClick="btBackOnClick" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- الخلفية -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#F9CD6A" /> <!-- لون الخلفية -->
+            <stroke android:width="4dp" android:color="#4840A3"/>
+            <corners android:radius="10dp" />
+        </shape>
+    </item>
+
+    <!-- سهم القائمة المنسدلة -->
+    <item android:drawable="@drawable/spinner_arrow"
+        android:right="8dp"
+        android:gravity="end|center_vertical"/>
+</layer-list>

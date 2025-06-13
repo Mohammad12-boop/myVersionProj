@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4840A3"
+    tools:context=".MainActivityVolley">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="415dp"
+        android:layout_height="254dp"
+        app:layout_constraintBottom_toTopOf="@+id/AssignmnetList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="255dp"
+            android:layout_marginTop="0dp"
+            android:background="#4840A3"
+            app:srcCompat="@drawable/ass"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/capriola"
+            android:text="Assignments"
+            android:textColor="#D9E5FF"
+            android:textSize="25dp"/>
+
+    </FrameLayout>
+    <!--     <ListView -->
+    <!--         android:id="@+id/AssignmnetList" -->
+    <!--         android:layout_width="372dp" -->
+    <!--         android:layout_height="405dp" -->
+    <!--         android:background="#9CBBFC" -->
+    <!--         tools:layout_editor_absoluteX="20dp" -->
+    <!--         tools:layout_editor_absoluteY="257dp" -->
+    <!--         /> -->
+
+    <ScrollView
+        android:id="@+id/AssignmnetList"
+        android:layout_width="389dp"
+        android:layout_height="417dp"
+        android:layout_marginBottom="58dp"
+        android:background="#D9E5FF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+        <LinearLayout
+            android:id="@+id/verticalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/Assignmnets"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="2dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp">
+
+                <TextView
+                    android:id="@+id/AssignmentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/capriola"
+                    android:text="Assignment"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/countStudent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/capriola"
+                    android:text="sub student count"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/publishDate"
+                    android:layout_width="49dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/capriola"
+                    android:text="Time"
+                    android:textStyle="bold"/>
+
+                <!--                 <Button -->
+                <!--                     android:id="@+id/Replay" -->
+                <!--                     style="@style/CustomButton" -->
+                <!--                     android:layout_width="wrap_content" -->
+                <!--                     android:layout_height="wrap_content" -->
+                <!--                     android:layout_marginRight="7dp" -->
+                <!--                     android:layout_weight="1" -->
+                <!--                     android:text="Replay" /> -->
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/createAssignment"
+        style="@style/CustomButton"
+        android:layout_width="388dp"
+        android:layout_height="59dp"
+        android:text="Create New Assignment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AssignmnetList"
+        app:layout_constraintVertical_bias="0.111"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

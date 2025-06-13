@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">myVersion_Proj</string>
+    <string name="view_schedule">View schedule</string>
+    <string name="w3_school">W3 School</string>
+    <string name="load">Load</string>
+    <string name="publish_marks">Publish marks</string>
+    <string name="manage_assignments">Manage Assignments</string>
+    <string name="name">Name</string>
+    <string name="marks">Marks</string>
+    <string name="publish">Publish</string>
+    <string name="enter_assessment_type">Enter Assessment type</string>
+    <string name="schedule">Schedule</string>
+    <string name="rb_publish_marks">Publish_Marks</string>
+    <string name="show_marks">Show_Marks</string>
+    <string name="server_ip">http://192.168.88.9/schooltest/</string>
+</resources>

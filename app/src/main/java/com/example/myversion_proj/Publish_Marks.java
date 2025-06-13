@@ -59,6 +59,7 @@ public class Publish_Marks extends AppCompatActivity {
     private Button btPublish;
     private int teacher_id= 1;
     private ArrayList<String> grade= new ArrayList<>();
+    String subjectName = "";
 
 
 
@@ -511,7 +512,7 @@ public class Publish_Marks extends AppCompatActivity {
                 btPublish.setVisibility(View.GONE);
             }
 
-            String subjectName= spnSubjects.getSelectedItem().toString();
+            subjectName= spnSubjects.getSelectedItem().toString();
             String classesName = spnClasses.getSelectedItem().toString();
 
             putStudents(subjectName, classesName);
@@ -691,7 +692,6 @@ public class Publish_Marks extends AppCompatActivity {
         int count= baseLin.getChildCount();
 
         String assessment_type= ((TextView)baseLin.getChildAt(0)).getText().toString();
-        String subject_name= spnSubjects.getSelectedItem().toString();
 
         Handler handler = new Handler();
         int delay = 0;
@@ -712,7 +712,7 @@ public class Publish_Marks extends AppCompatActivity {
                 String student_name = textView.getText().toString();
                 String mark = editText.getText().toString();
 
-                AddMark(student_name, subject_name, mark, assessment_type);
+                AddMark(student_name, subjectName, mark, assessment_type);
 
             }
 

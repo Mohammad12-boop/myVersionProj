@@ -40,7 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void btViewScheduleOnClick(View view) {
 
-        Intent intent = new Intent(MainActivity.this, Show_Schedule_For_Teacher.class);
+        Intent intent = new Intent(MainActivity.this, BuildSchedule.class);
         startActivity(intent);
+
+//        Intent intent = new Intent(MainActivity.this, Show_Schedule_For_Teacher.class);
+//        startActivity(intent);
     }
 }

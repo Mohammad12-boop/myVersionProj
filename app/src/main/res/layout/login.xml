@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4840A3"
+    android:gravity="fill_vertical"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="349dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="150dp"
+        android:text="Login"
+        android:textAlignment="center"
+        android:textColor="#D9E5FF"
+        android:textSize="45dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="355dp"
+        android:layout_height="56dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="center|left"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="15dp"
+        android:textColor="#D9E5FF"
+        android:textColorHint="#4840A3"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/passwordEditText"
+        android:layout_width="355dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_background"
+        android:gravity="center|start"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        android:textColor="#D9E5FF"
+        android:textColorHint="#4840A3"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/loginButton"
+        style="@style/CustomButton"
+        android:layout_width="355dp"
+        android:layout_height="97dp"
+        android:layout_marginTop="24dp"
+        android:text="Login"
+        android:textColor="#4840A3"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -12,8 +12,21 @@
     <string name="schedule">Schedule</string>
     <string name="rb_publish_marks">Publish_Marks</string>
     <string name="show_marks">Show_Marks</string>
-    <string name="server_ip">http://192.168.88.9/schooltest/</string>
+    <string name="server_ip">http://10.0.2.2/school/</string>
     <string name="enter_room">Enter Room</string>
     <string name="add">Add</string>
     <string name="build_schedule">Build Schedule</string>
+
+    <string name="student_panel">Student Panel</string>
+    <string name="show_schedule">Show Schedule</string>
+    <string name="view_marks">View Marks</string>
+    <string name="assignments">Assignments</string>
+
+    <string name="registrar_dashboard">Registrar Dashboard</string>
+    <string name="student"> Students</string>
+    <string name="manage_subjects">Manage Subjects</string>
+    <string name="build_schedules">Build Schedules</string>
+    <string name="view_students">View Students</string>
+    <string name="teachers">Teachers</string>
+
 </resources>

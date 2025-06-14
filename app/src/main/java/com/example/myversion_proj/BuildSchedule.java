@@ -1,12 +1,10 @@
 package com.example.myversion_proj;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
@@ -44,10 +42,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class BuildSchedule extends AppCompatActivity {
@@ -503,7 +499,7 @@ public class BuildSchedule extends AppCompatActivity {
 
     public void btBackOnClick(View view) {
 
-        Intent intent = new Intent(BuildSchedule.this, MainActivity.class);
+        Intent intent = new Intent(BuildSchedule.this, RegistrarActivity.class);
         startActivity(intent);
     }
 

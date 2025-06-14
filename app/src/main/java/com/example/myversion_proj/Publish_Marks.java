@@ -788,7 +788,7 @@ public class Publish_Marks extends AppCompatActivity {
 
     public void btBackOnClick(View view) {
 
-        Intent intent = new Intent(Publish_Marks.this, MainActivity.class);
+        Intent intent = new Intent(Publish_Marks.this, Teacher_Interfaces.class);
         startActivity(intent);
     }
 

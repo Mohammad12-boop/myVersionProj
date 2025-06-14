@@ -26,7 +26,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Show_Schedule_For_Teacher extends AppCompatActivity {
 
@@ -104,7 +103,7 @@ public class Show_Schedule_For_Teacher extends AppCompatActivity {
 
                 }
 
-                TestAdapter adapter = new TestAdapter(Show_Schedule_For_Teacher.this,
+                DaysAdapter adapter = new DaysAdapter(Show_Schedule_For_Teacher.this,
                         scheduleList);
                 recycler_schedule.setAdapter(adapter);
             }
@@ -121,7 +120,7 @@ public class Show_Schedule_For_Teacher extends AppCompatActivity {
 
     public void btBackOnClick(View view) {
 
-        Intent intent = new Intent(Show_Schedule_For_Teacher.this, MainActivity.class);
+        Intent intent = new Intent(Show_Schedule_For_Teacher.this, Teacher_Interfaces.class);
         startActivity(intent);
     }
 }

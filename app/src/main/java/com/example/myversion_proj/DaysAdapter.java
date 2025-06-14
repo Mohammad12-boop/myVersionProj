@@ -1,7 +1,6 @@
 package com.example.myversion_proj;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,23 +10,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
+public class DaysAdapter extends RecyclerView.Adapter<DaysAdapter.ViewHolder> {
 
     private Context context;
     private List<ScheduleModel> scheduleList;
 
-    public TestAdapter(Context context, List<ScheduleModel> scheduleList){
+    public DaysAdapter(Context context, List<ScheduleModel> scheduleList){
         this.context = context;
         this.scheduleList = scheduleList;
     }
 
     @Override
-    public TestAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public DaysAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.test,
+        CardView v = (CardView) LayoutInflater.from(parent.getContext()).inflate(R.layout.days_card,
                     parent,
                     false);
 
@@ -35,7 +33,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(TestAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(DaysAdapter.ViewHolder holder, int position) {
 
         final ScheduleModel scheduleModel = scheduleList.get(position);
         List<ScheduleItems> scheduleItems = scheduleList.get(position).getItems();

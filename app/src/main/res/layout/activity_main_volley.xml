@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#4840A3"
-    tools:context=".MainActivityVolley">
+    tools:context=".MainActivity">
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -80,7 +80,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/capriola"
-                    android:text="Assignment"
+                    android:text="Ass"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -89,27 +89,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/capriola"
-                    android:text="sub student count"
-                    android:textStyle="bold"/>
+                    android:paddingLeft="20dp"
+                    android:text="student count"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/publishDate"
-                    android:layout_width="49dp"
+                    android:layout_width="550dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/capriola"
+                    android:paddingLeft="30dp"
                     android:text="Time"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
-                <!--                 <Button -->
-                <!--                     android:id="@+id/Replay" -->
-                <!--                     style="@style/CustomButton" -->
-                <!--                     android:layout_width="wrap_content" -->
-                <!--                     android:layout_height="wrap_content" -->
-                <!--                     android:layout_marginRight="7dp" -->
-                <!--                     android:layout_weight="1" -->
-                <!--                     android:text="Replay" /> -->
             </LinearLayout>
 
         </LinearLayout>

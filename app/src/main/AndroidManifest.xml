@@ -15,6 +15,58 @@
         android:theme="@style/Base.Theme.MyVersion_Proj"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".StudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ManageSubjectsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubjectListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RepliesAssignment"
+            android:exported="false" />
+        <activity
+            android:name=".CreateNewAssignment"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AssignmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewMarksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SubmitAssignmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentPanelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Teacher_Interfaces"
+            android:exported="false" />
         <activity
             android:name=".BuildSchedule"
             android:exported="false" />
@@ -22,13 +74,10 @@
             android:name=".Show_Schedule_For_Teacher"
             android:exported="false" />
         <activity
-            android:name=".MainActivityVolley"
-            android:exported="false" />
-        <activity
             android:name=".Publish_Marks"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

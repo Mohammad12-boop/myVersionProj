@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#4840A3"
+    tools:context=".BuildSchedule">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="420dp"
+        android:layout_height="700dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:background="#D9E5FF"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/build_schedule"
+            android:textAlignment="center"
+            android:textColor="#4840A3"
+            android:textSize="34sp" />
+
+        <Spinner
+            android:id="@+id/spnSubjects2"
+            android:layout_width="232dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/spinner_background" />
+
+        <HorizontalScrollView
+            android:id="@+id/sclChoose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="#4840A3"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#D9E5FF"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.widget.CheckBox
+                        android:id="@+id/chSaturday"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_checkbox_selector"
+                        android:text="Saturday"
+                        android:textSize="8pt" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupSaturday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_8_9"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="08:00:00-09:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_9_10"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="09:00:00-10:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_10_11"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="10:00:00-11:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_11_12"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="11:00:00-12:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_12_13"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="12:00:00-13:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_13_14"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="13:00:00-14:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Saturday_14_15"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="14:00:00-15:00:00" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.widget.CheckBox
+                        android:id="@+id/chSunday"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_checkbox_selector"
+                        android:text="Sunday"
+                        android:textSize="8pt" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupSunday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_8_9"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="08:00:00-09:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_9_10"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="09:00:00-10:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_10_11"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="10:00:00-11:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_11_12"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="11:00:00-12:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_12_13"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="12:00:00-13:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_13_14"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="13:00:00-14:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/sunday_14_15"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="14:00:00-15:00:00" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.widget.CheckBox
+                        android:id="@+id/chMonday"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_checkbox_selector"
+                        android:text="Monday"
+                        android:textSize="8pt" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupMonday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_8_9"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="08:00:00-09:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_9_10"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="09:00:00-10:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_10_11"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="10:00:00-11:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_11_12"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="11:00:00-12:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_12_13"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="12:00:00-13:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_13_14"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="13:00:00-14:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Monday_14_15"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="14:00:00-15:00:00" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.widget.CheckBox
+                        android:id="@+id/chTuesday"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_checkbox_selector"
+                        android:text="Tuesday"
+                        android:textSize="8pt" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupTuesday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_8_9"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="08:00:00-09:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_9_10"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="09:00:00-10:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_10_11"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="10:00:00-11:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_11_12"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="11:00:00-12:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_12_13"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="12:00:00-13:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_13_14"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="13:00:00-14:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Tuesday_14_15"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="14:00:00-15:00:00" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.widget.CheckBox
+                        android:id="@+id/chWednesday"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_checkbox_selector"
+                        android:text="Wednesday"
+                        android:textSize="8pt" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupWednesday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_8_9"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="08:00:00-09:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_9_10"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="09:00:00-10:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_10_11"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="10:00:00-11:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_11_12"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="11:00:00-12:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_12_13"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="12:00:00-13:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_13_14"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="13:00:00-14:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Wednesday_14_15"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="14:00:00-15:00:00" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/textview_background"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <android.widget.CheckBox
+                        android:id="@+id/chThursday"
+                        style="@style/CustomTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:button="@drawable/custom_checkbox_selector"
+                        android:text="Thursday"
+                        android:textSize="8pt" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupThursday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_8_9"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="08:00:00-09:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_9_10"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="09:00:00-10:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_10_11"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="10:00:00-11:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_11_12"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="11:00:00-12:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_12_13"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="12:00:00-13:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_13_14"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="13:00:00-14:00:00" />
+
+                        <android.widget.RadioButton
+                            android:id="@+id/Thursday_14_15"
+                            style="@style/CustomTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:button="@drawable/custom_radio_selector"
+                            android:padding="8dp"
+                            android:text="14:00:00-15:00:00" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <EditText
+            android:id="@+id/edtRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/capriola"
+            android:hint="@string/enter_room"
+            android:padding="15dp"
+            android:textAlignment="center"
+            android:textColor="#4840A3"
+            android:textColorHint="#4840A3"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btAddSubjectToSchedule"
+            style="@style/CustomButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:onClick="btAddOnClick"
+            android:text="@string/add"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="283dp"
+        android:layout_height="84dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="@string/w3_school"
+        android:textColor="#D9E5FF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btBack"
+        style="@style/CustomButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="331dp"
+        android:layout_marginBottom="29dp"
+        android:rotation="180"
+        app:icon="@android:drawable/ic_media_play"
+        app:iconGravity="textEnd"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:onClick="btBackOnClick" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

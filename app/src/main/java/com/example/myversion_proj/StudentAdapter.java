@@ -18,11 +18,17 @@ import java.util.List;
 public class StudentAdapter extends ArrayAdapter<Student> {
     private final Context context;
     private final List<Student> students;
+    private final onEditClickListener editClickListener;
 
-    public StudentAdapter(Context context, List<Student> students) {
+    public interface onEditClickListener {
+        void onEditClick (Student student);
+    }
+
+    public StudentAdapter(Context context, List<Student> students, onEditClickListener editClickListener) {
         super(context, R.layout.student_list_item, students);
         this.context = context;
         this.students = students;
+        this.editClickListener= editClickListener;
     }
 
     @NonNull
@@ -48,16 +54,8 @@ public class StudentAdapter extends ArrayAdapter<Student> {
         // Set button click listeners
         btnEdit.setOnClickListener(v -> {
             // Get the parent activity
-            StudentActivity activity = (StudentActivity) context;
+            editClickListener.onEditClick(currentStudent);
 
-            // Call the showEditDialog method directly
-            activity.showEditDialog(currentStudent);
-        });
-
-        btnDelete.setOnClickListener(v -> {
-            if (context instanceof StudentActivity) {
-                ((StudentActivity) context).deleteStudent(currentStudent.getId());
-            }
         });
 
         return convertView;

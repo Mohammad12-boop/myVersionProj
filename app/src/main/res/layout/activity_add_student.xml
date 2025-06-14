@@ -44,6 +44,14 @@
             android:inputType="textEmailAddress"
             android:layout_marginTop="16dp" />
 
+        <EditText
+            android:id="@+id/etPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginTop="16dp" />
+
         <!-- Program Selection Spinner -->
         <Spinner
             android:id="@+id/spinnerProgram"

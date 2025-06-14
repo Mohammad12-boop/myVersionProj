@@ -1,5 +1,6 @@
 package com.example.myversion_proj;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -27,12 +28,10 @@ import java.util.List;
 import java.util.Map;
 
 public class EditStudentActivity extends AppCompatActivity {
-    private EditText etName, etEmail;
+    private EditText etName, etEmail, etPassword;
     private Spinner spinnerClass;
-    private Student currentStudent;
-    private List<SchoolClass> classes = new ArrayList<>();
     private int studentId;
-
+    private List<SchoolClass> classes = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +41,7 @@ public class EditStudentActivity extends AppCompatActivity {
         // Initialize views
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword); // New password field
         spinnerClass = findViewById(R.id.spinnerClass);
         Button btnSave = findViewById(R.id.btnSave);
         ImageButton btnBack = findViewById(R.id.btnBack);
@@ -49,18 +49,20 @@ public class EditStudentActivity extends AppCompatActivity {
 
         // Get student data from intent
         try {
-            // In EditStudentActivity.java
             studentId = getIntent().getIntExtra("STUDENT_ID", -1);
             String name = getIntent().getStringExtra("STUDENT_NAME");
             String email = getIntent().getStringExtra("STUDENT_EMAIL");
+            String password = getIntent().getStringExtra("STUDENT_PASSWORD"); // Get password
             int classId = getIntent().getIntExtra("STUDENT_CLASS_ID", -1);
 
-            if (studentId == -1 || classId == -1) {
-                throw new Exception("Invalid student data");
+            if (studentId == -1) {
+                throw new Exception("Invalid student ID");
             }
 
+            // Set all fields including password
             etName.setText(name);
             etEmail.setText(email);
+            etPassword.setText(password);
 
         } catch (Exception e) {
             Toast.makeText(this, "Error loading student data", Toast.LENGTH_SHORT).show();
@@ -68,16 +70,17 @@ public class EditStudentActivity extends AppCompatActivity {
             finish();
             return;
         }
-        // Load classes
-        loadClasses();
 
         // Set listeners
         btnBack.setOnClickListener(v -> finish());
         btnSave.setOnClickListener(v -> updateStudent());
+
+        // Load classes
+        loadClasses();
     }
 
     private void loadClasses() {
-        String url = "http://10.0.2.2/school_api/get_classes.php";
+        String url = "http://10.0.2.2/school/get_classes.php";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -86,6 +89,7 @@ public class EditStudentActivity extends AppCompatActivity {
                 response -> {
                     try {
                         if (response.getString("status").equals("success")) {
+                            classes.clear();
                             JSONArray classesArray = response.getJSONArray("classes");
                             for (int i = 0; i < classesArray.length(); i++) {
                                 JSONObject classObj = classesArray.getJSONObject(i);
@@ -94,12 +98,13 @@ public class EditStudentActivity extends AppCompatActivity {
                                         classObj.getString("name")
                                 ));
                             }
-                            setupProgramSpinner();
+                            setupClassSpinner();
                         } else {
-                            showError(response.optString("message", "Failed to load programs"));
+                            showError(response.optString("message", "Failed to load classes"));
                         }
                     } catch (JSONException e) {
-                        showError("Error parsing program data");
+                        showError("Error parsing class data");
+                        Log.e("LOAD_CLASSES", "JSON error", e);
                     }
                 },
                 error -> {
@@ -108,6 +113,7 @@ public class EditStudentActivity extends AppCompatActivity {
                         errorMsg = new String(error.networkResponse.data);
                     }
                     showError(errorMsg);
+                    Log.e("LOAD_CLASSES", "Network error", error);
                 }
         );
 
@@ -120,7 +126,7 @@ public class EditStudentActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-    private void setupProgramSpinner() {
+    private void setupClassSpinner() {
         ArrayAdapter<SchoolClass> adapter = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -128,25 +134,56 @@ public class EditStudentActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerClass.setAdapter(adapter);
+
+        // Select the current class if available
+        int classId = getIntent().getIntExtra("STUDENT_CLASS_ID", -1);
+        if (classId != -1) {
+            for (int i = 0; i < classes.size(); i++) {
+                if (classes.get(i).getId() == classId) {
+                    spinnerClass.setSelection(i);
+                    break;
+                }
+            }
+        }
     }
 
     private void updateStudent() {
         String name = etName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim(); // Get password
         SchoolClass selectedClass = (SchoolClass) spinnerClass.getSelectedItem();
 
-        if (name.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toast.makeText(this, "Please enter valid data", Toast.LENGTH_SHORT).show();
+        // Validation
+        if (name.isEmpty()) {
+            etName.setError("Name is required");
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etEmail.setError("Enter a valid email");
+            return;
+        }
+        if (password.isEmpty()) {
+            etPassword.setError("Password is required");
+            return;
+        }
+        if (selectedClass == null || selectedClass.getId() == -1) {
+            Toast.makeText(this, "Please select a class", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String url = "http://10.0.2.2/school_api/edit_student.php";
+        String url = "http://10.0.2.2/school/edit_student.php";
+
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Updating student...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
         try {
             JSONObject jsonBody = new JSONObject();
             jsonBody.put("student_id", studentId);
             jsonBody.put("name", name);
             jsonBody.put("email", email);
+            jsonBody.put("password", password); // Include password
             jsonBody.put("class_id", selectedClass.getId());
 
             JsonObjectRequest request = new JsonObjectRequest(
@@ -154,17 +191,25 @@ public class EditStudentActivity extends AppCompatActivity {
                     url,
                     jsonBody,
                     response -> {
+                        progressDialog.dismiss();
                         try {
                             if (response.getString("status").equals("success")) {
+                                Toast.makeText(this, "Student updated successfully", Toast.LENGTH_SHORT).show();
                                 setResult(RESULT_OK);
                                 finish();
+                            } else {
+                                Toast.makeText(this, response.getString("message"), Toast.LENGTH_SHORT).show();
                             }
-                            Toast.makeText(this, response.getString("message"), Toast.LENGTH_SHORT).show();
                         } catch (JSONException e) {
-                            Log.e("UPDATE_ERROR", "JSON parse error", e);
+                            Toast.makeText(this, "Error parsing response", Toast.LENGTH_SHORT).show();
+                            Log.e("UPDATE_STUDENT", "JSON error", e);
                         }
                     },
-                    error -> Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show()
+                    error -> {
+                        progressDialog.dismiss();
+                        Toast.makeText(this, "Network error", Toast.LENGTH_SHORT).show();
+                        Log.e("UPDATE_STUDENT", "Network error", error);
+                    }
             ) {
                 @Override
                 public Map<String, String> getHeaders() {
@@ -174,10 +219,18 @@ public class EditStudentActivity extends AppCompatActivity {
                 }
             };
 
+            request.setRetryPolicy(new DefaultRetryPolicy(
+                    15000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            ));
+
             Volley.newRequestQueue(this).add(request);
 
         } catch (JSONException e) {
-            Log.e("UPDATE_ERROR", "JSON creation error", e);
+            progressDialog.dismiss();
+            Toast.makeText(this, "Error creating request", Toast.LENGTH_SHORT).show();
+            Log.e("UPDATE_STUDENT", "JSON creation error", e);
         }
     }
 

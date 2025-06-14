@@ -1,6 +1,8 @@
 package com.example.myversion_proj;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.widget.ArrayAdapter;
@@ -16,8 +18,6 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.myversion_proj.R;
-import com.example.myversion_proj.SchoolClass;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 public class AddStudentActivity extends AppCompatActivity {
-    private EditText etFullName, etEmail;
+    private EditText etFullName, etEmail, etPassword;
     private Spinner spinnerProgram;
     private Button btnSubmit;
     private List<SchoolClass> classes = new ArrayList<>();
@@ -40,32 +40,142 @@ public class AddStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
-        ImageButton btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> onBackPressed());
-
         // Initialize views
         etFullName = findViewById(R.id.etFullName);
         etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPass);
         spinnerProgram = findViewById(R.id.spinnerProgram);
         btnSubmit = findViewById(R.id.btnSubmit);
+        ImageButton btnBack = findViewById(R.id.btnBack);
 
-        // Enable back button
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        // Auto-generate email when name changes
+        etFullName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                generateEmailFromName();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        btnBack.setOnClickListener(v -> onBackPressed());
         loadClasses();
         btnSubmit.setOnClickListener(v -> addStudent());
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
+    private void generateEmailFromName() {
+        String name = etFullName.getText().toString().trim();
+        if (!name.isEmpty()) {
+            // Generate email from name
+            String email = name.toLowerCase()
+                    .replaceAll("\\s+", ".")
+                    .replaceAll("[^a-z.]", "") + "@student.edu";
+            etEmail.setText(email);
+        }
     }
 
+    private void addStudent() {
+        String name = etFullName.getText().toString().trim();
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+
+        if (!validateInputs(name, email, password)) {
+            return;
+        }
+
+        SchoolClass selectedProgram = (SchoolClass) spinnerProgram.getSelectedItem();
+        if (selectedProgram == null || selectedProgram.getId() == -1) {
+            Toast.makeText(this, "Please select a program", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        addStudentToDatabase(name, email, password, selectedProgram.getId());
+    }
+
+    private boolean validateInputs(String name, String email, String password) {
+        boolean isValid = true;
+
+        if (name.isEmpty()) {
+            etFullName.setError("Name is required");
+            isValid = false;
+        }
+
+        if (email.isEmpty()) {
+            etEmail.setError("Email is required");
+            isValid = false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            etEmail.setError("Enter a valid email");
+            isValid = false;
+        }
+
+        if (password.isEmpty()) {
+            etPassword.setError("Password is required");
+            isValid = false;
+        }
+        return isValid;
+    }
+
+    private void addStudentToDatabase(String name, String email, String password, int programId) {
+        btnSubmit.setEnabled(false);
+
+        String url = "http://10.0.2.2/school/add_student.php";
+
+        try {
+            JSONObject jsonBody = new JSONObject();
+            jsonBody.put("name", name);
+            jsonBody.put("email", email);
+            jsonBody.put("password", password);
+            jsonBody.put("class_id", programId);
+
+            JsonObjectRequest request = new JsonObjectRequest(
+                    Request.Method.POST,
+                    url,
+                    jsonBody,
+                    response -> {
+                        btnSubmit.setEnabled(true);
+                        try {
+                            if (response.getString("status").equals("success")) {
+                                Toast.makeText(this, "Student added successfully", Toast.LENGTH_SHORT).show();
+                                finish(); // Close activity after successful addition
+                            } else {
+                                showError(response.optString("message", "Failed to add student"));
+                            }
+                        } catch (JSONException e) {
+                            showError("Error parsing server response");
+                        }
+                    },
+                    error -> {
+                        btnSubmit.setEnabled(true);
+                        showError("Network error: " + error.getMessage());
+                    }
+            ) {
+                @Override
+                public Map<String, String> getHeaders() {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Content-Type", "application/json");
+                    return headers;
+                }
+            };
+
+            request.setRetryPolicy(new DefaultRetryPolicy(
+                    15000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            ));
+
+            Volley.newRequestQueue(this).add(request);
+
+        } catch (JSONException e) {
+            btnSubmit.setEnabled(true);
+            showError("Error creating request");
+        }
+    }
     private void loadClasses() {
-        String url = "http://10.0.2.2/school_api/get_classes.php";
+        String url = "http://10.0.2.2/school/get_classes.php";
 
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
@@ -118,16 +228,6 @@ public class AddStudentActivity extends AppCompatActivity {
         spinnerProgram.setAdapter(adapter);
     }
 
-    private void addStudent() {
-        String name = etFullName.getText().toString().trim();
-        String email = etEmail.getText().toString().trim();
-
-        if (!validateInputs(name, email)) return;
-
-        SchoolClass selectedProgram = (SchoolClass) spinnerProgram.getSelectedItem();
-        addStudentToDatabase(name, email, selectedProgram.getId());
-    }
-
     private boolean validateInputs(String name, String email) {
         name = name.trim();
         email = email.trim();
@@ -149,7 +249,7 @@ public class AddStudentActivity extends AppCompatActivity {
         btnSubmit.setEnabled(false);
 
         // 1. Verify URL is correct
-        String url = "http://10.0.2.2/school_api/add_student.php";
+        String url = "http://10.0.2.2/school/add_student.php";
         Log.d("API", "Attempting to POST to: " + url);
 
         try {

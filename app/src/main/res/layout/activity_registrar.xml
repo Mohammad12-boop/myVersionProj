@@ -1,62 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/lavender_web"
-    android:padding="16dp">
+    android:background="#4840A3"
+    tools:context=".Teacher_Interfaces">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="420dp"
+        android:layout_height="700dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="48dp"
+        android:background="#D9E5FF"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/alfa_slab_one"
+            android:text="@string/registrar_dashboard"
+            android:textAlignment="center"
+            android:textColor="#4840A3"
+            android:textSize="34sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lavender_web"
+            android:gravity="center|top"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Button
+                android:id="@+id/btnStudent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/student"
+                style="@style/CustomButton" />
+
+            <Button
+                android:id="@+id/btnTeachers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/teachers"
+                style="@style/CustomButton" />
+
+            <Button
+                android:id="@+id/btnManageSubjects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/manage_subjects"
+                style="@style/CustomButton" />
+
+            <Button
+                android:id="@+id/btnBuildSchedules"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/build_schedules"
+                style="@style/CustomButton" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"
-        android:text="@string/registrar_dashboard"
-        android:textColor="@color/violet_blue"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:id="@+id/textView"
+        android:layout_width="283dp"
+        android:layout_height="84dp"
+        android:fontFamily="@font/alfa_slab_one"
+        android:text="@string/w3_school"
+        android:textColor="#D9E5FF"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnStudent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/violet_blue"
-        android:text="@string/student"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btnViewStudent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/violet_blue"
-        android:text="@string/view_students"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btnTeachers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/violet_blue"
-        android:text="@string/teachers"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btnManageSubjects"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@color/saffron"
-        android:text="@string/manage_subjects"
-        android:textColor="@color/black" />
-
-    <Button
-        android:id="@+id/btnBuildSchedules"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/jordy_blue"
-        android:text="@string/build_schedules"
-        android:textColor="@color/black" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

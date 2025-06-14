@@ -31,7 +31,6 @@ public class ViewMarksActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_marks);
 
         layoutMarksContainer = findViewById(R.id.layoutMarksContainer);
-
         loadMarks(); // 🟢 ناديناها هون
     }
 
@@ -52,9 +51,9 @@ public class ViewMarksActivity extends AppCompatActivity {
                             // 🟦 اسم المادة
                             TextView subjectTitle = new TextView(this);
                             subjectTitle.setText(subjectObj.getString("subject_name"));
-                            subjectTitle.setTextSize(20);
+                            subjectTitle.setTextSize(24);
                             subjectTitle.setTypeface(null, Typeface.BOLD);
-                            subjectTitle.setTextColor(Color.parseColor("#2196F3"));
+                            subjectTitle.setTextColor(Color.parseColor("#4840A3"));
                             subjectTitle.setPadding(0, 24, 0, 8);
                             layoutMarksContainer.addView(subjectTitle);
 
@@ -72,12 +71,14 @@ public class ViewMarksActivity extends AppCompatActivity {
                                 label.setText(mark.getString("label"));
                                 label.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
                                 label.setTextColor(Color.DKGRAY);
+                                label.setTextSize(16);
 
                                 TextView value = new TextView(this);
                                 value.setText(mark.getString("value"));
                                 value.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
                                 value.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_END);
                                 value.setTextColor(Color.BLACK);
+                                value.setTextSize(18);
 
                                 row.addView(label);
                                 row.addView(value);

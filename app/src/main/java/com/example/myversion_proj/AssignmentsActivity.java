@@ -1,5 +1,6 @@
 package com.example.myversion_proj;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -7,6 +8,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -82,9 +84,9 @@ public class AssignmentsActivity extends AppCompatActivity {
             // عنوان المادة
             TextView subjectTitle = new TextView(this);
             subjectTitle.setText(subject);
-            subjectTitle.setTextSize(20);
+            subjectTitle.setTextSize(24);
             subjectTitle.setTypeface(null, Typeface.BOLD);
-            subjectTitle.setTextColor(Color.parseColor("#2196F3"));
+            subjectTitle.setTextColor(Color.parseColor("#4840A3"));
             subjectTitle.setPadding(0, 24, 0, 8);
             container.addView(subjectTitle);
 
@@ -106,8 +108,9 @@ public class AssignmentsActivity extends AppCompatActivity {
         // عنوان الواجب
         TextView titleView = new TextView(this);
         titleView.setText(title);
+        titleView.setTextSize(16);
         titleView.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-        titleView.setTextColor(Color.BLUE);
+        titleView.setTextColor(Color.parseColor("#4840A3"));
         titleView.setPaintFlags(titleView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         titleView.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(fileUrl));
@@ -115,7 +118,8 @@ public class AssignmentsActivity extends AppCompatActivity {
         });
 
         // زر submit
-        Button submitBtn = new Button(this);
+        Context context = new ContextThemeWrapper(AssignmentsActivity.this, R.style.CustomButton);
+        Button submitBtn = new Button(context);
         submitBtn.setText(alreadySubmitted ? "Submitted" : "Submit");
         submitBtn.setEnabled(!alreadySubmitted);
         submitBtn.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1));

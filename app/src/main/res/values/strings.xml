@@ -28,5 +28,9 @@
     <string name="build_schedules">Build Schedules</string>
     <string name="view_students">View Students</string>
     <string name="teachers">Teachers</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="login">Login</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="show_assignments">Show Assignments</string>
 
 </resources>
